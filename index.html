@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft</title>
+  <style>
+    /* Color Variables */
+    :root {
+      --primary-color: #1d1d4b;
+      --accent-color: #ff7f50;
+      --text-color: #fafafa;
+      --bg-color: #1b1b2f;
+      --card-bg: #22223b;
+      --button-hover: #ff4b2b;
+      --footer-bg: #22223b;
+    }
+
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.2rem;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .navbar .logo {
+      color: var(--text-color);
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .navbar .links {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+    }
+    .navbar a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 2rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease-in-out, transform 0.2s ease;
+    }
+    .navbar a:hover {
+      color: var(--accent-color);
+      transform: scale(1.1);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 70px;
+      width: 100%;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, var(--accent-color), var(--button-hover));
+      text-align: center;
+      color: var(--text-color);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 70%);
+      animation: rotate 10s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+    .hero p {
+      font-size: 1.4rem;
+      color: #dcdcdc;
+    }
+    .hero button {
+      padding: 1rem 2rem;
+      margin-top: 1.5rem;
+      background: var(--button-hover);
+      color: var(--text-color);
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero button:hover {
+      background: var(--accent-color);
+    }
+
+    /* Content Section */
+    .content {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+
+        text-align: center;
+        margin-bottom: 2rem;
+
+
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 380px;
+      margin: 1rem auto;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card h2 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    .card p {
+      color: #dcdcdc;
+    }
+    .button {
+      padding: 1rem 2rem;
+      background: var(--button-hover);
+      color: var(--text-color);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: var(--accent-color);
+    }
+
+
+    
+    a {
+    color: #fafafa; 
+    text-decoration: none; 
+    }
+
+    
+
+
+    /* Footer */
+    .footer {
+      width: 100%;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-color);
+      font-size: 1.1rem;
+      margin-top: 3rem;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .footer p {
+      margin: 1rem 0;
+    }
+    .footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .social-icons {
+      margin-top: 1.5rem;
+    }
+    .social-icons a {
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      color: var(--text-color);
+    }
+    .social-icons a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .card {
+        max-width: 100%;
+      }
+      .navbar .links {
+        display: none;
+      }
+      .navbar .hamburger {
+        display: flex;
+      }
+      .navbar .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg);
+        position: relative;
+      }
+      .navbar .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+      .navbar .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg);
+        position: relative;
+      }
+      .navbar .links.active {
+        display: grid;
+        grid-template-columns: 1fr;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px); /* Adds background blur */
+      }
+      .navbar a {
+        text-align: center;
+        margin: 0.5rem 0;
+      }
+      .footer {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Microsoft</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="links">
+      <a href="#our-mission">Our Mission</a>
+      <a href="#innovation">Innovation</a>
+      <a href="#culture">Culture</a>
+      <a href="#products">Products</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Get to Know Microsoft</h1>
+    <p>Discover how Microsoft empowers people, redefines technology, and drives innovation worldwide.</p>
+    <button class="button">Learn More</button>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content" id="our-mission">
+    <h2 class="section-title">Our Mission</h2>
+    <p style="text-align: center; width: 100%; margin: 20px 0;">
+        At Microsoft, our mission is to empower every person and every organization on the planet to achieve more. We believe that technology should inspire and drive progress, creating a more inclusive and sustainable future.
+    </p>
+    <div class="card">
+        <h2>Empowering Individuals</h2>
+        <p>Our solutions are designed to help individuals reach their full potential, from students to professionals.</p>
+    </div>
+    <div class="card">
+        <h2>Supporting Organizations</h2>
+        <p>We work with businesses, nonprofits, and governments to fuel innovation and achieve shared goals.</p>
+    </div>
+</div>
+
+<div class="content" id="innovation">
+    <h2 class="section-title">Innovation at Microsoft</h2>
+    <p style="text-align: center; width: 100%; margin: 20px 0;">
+        Innovation is at the heart of Microsoft. From AI advancements to powerful computing platforms, we are continuously pushing boundaries to create groundbreaking technologies.
+    </p>
+    <div class="card">
+        <h2>Artificial Intelligence</h2>
+        <p>We’re making AI accessible and responsible for everyone.</p>
+        <button class="button"><a href="AI.html">Explore AI Solutions</a></button>
+    </div>
+    <div class="card">
+        <h2>Cloud Computing</h2>
+        <p>With Azure, we bring flexibility, scalability, and power to businesses of all sizes.</p>
+        <button class="button"><a href="Azure.html">Learn About Azure</a></button>
+    </div>
+    <div class="card">
+        <h2>Quantum Computing</h2>
+        <p>Transforming the future with quantum innovations.</p>
+        <button class="button"><a href="Quantum.html">Discover Quantum</a></button>
+        
+    </div>
+</div>
+
+<div class="content" id="culture">
+    <h2 class="section-title">Our Culture</h2>
+    <p style="text-align: center; width: 100%; margin: 20px 0;">
+        At Microsoft, we foster a diverse and inclusive culture that encourages collaboration, learning, and community impact. We believe in creating an environment where everyone can thrive.
+    </p>
+    <div class="card">
+        <h2>Inclusivity</h2>
+        <p>Building a workplace that reflects the diversity of our global communities.</p>
+    </div>
+    <div class="card">
+        <h2>Sustainability</h2>
+        <p>Committed to becoming carbon negative and reducing environmental impact.</p>
+    </div>
+    <div class="card">
+        <h2>Community Engagement</h2>
+        <p>We support communities by engaging in meaningful projects and initiatives worldwide.</p>
+    </div>
+</div>
+
+<div class="content" id="products">
+    <h2 class="section-title">Explore Our Products</h2>
+    <p style="text-align: center; width: 100%; margin: 20px 0;">
+        From productivity tools to gaming and cloud services, Microsoft offers a range of products to enhance your personal and professional life.
+    </p>
+    <div class="card">
+        <h2>Microsoft 365</h2>
+        <p>Stay productive and connected with Microsoft 365's powerful cloud tools.</p>
+        <button class="button"><a href="MS 365.html">Learn More</a></button>
+    </div>
+    <div class="card">
+        <h2>Surface Devices</h2>
+        <p>Discover our Surface line of devices for both personal and professional use.</p>
+        <button class="button"><a href="Surface Devices.html">Explore Devices</a></button>
+    </div>
+    <div class="card">
+        <h2>Xbox</h2>
+        <p>Experience gaming at its best with Xbox consoles, games, and accessories.</p>
+        <button class="button"><a href="Xbox.html">Learn About Xbox</a></button>
+    </div>
+</div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2024 Microsoft Corporation</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/Microsoft/" class="fab fa-facebook-f">Facebook</a>
+      <a href="https://twitter.com/Microsoft?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="fab fa-twitter">Twitter</a>
+      <a href="https://www.linkedin.com/company/microsoft" class="fab fa-linkedin-in">LinkedIn</a>
+    </div>
+  </div>
+
+  <script>
+    
+    function toggleMenu() {
+      const menu = document.querySelector('.navbar .links');
+      const hamburger = document.querySelector('.navbar .hamburger');
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+      window.addEventListener('scroll', () => {
+    localStorage.setItem('scrollPosition', window.scrollY);
+  });
+
+  // Restore the scroll position on page load
+  window.addEventListener('load', () => {
+    const savedPosition = localStorage.getItem('scrollPosition');
+    if (savedPosition) {
+      window.scrollTo(0, savedPosition);
+    }
+  });
+  </script>
+</body>
+</html>
